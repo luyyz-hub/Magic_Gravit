@@ -1,0 +1,310 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocha Chueiri - Escola de Magia Ancestral</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0d0a08;
+            color: #e6d5b8;
+            font-family: 'Cinzel', serif;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(ellipse at top, #1f1814 0%, transparent 60%),
+                radial-gradient(ellipse at bottom, #120e0c 0%, #0a0806 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header com imagem de fundo */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 80px 20px 60px;
+            border-bottom: 3px solid #8b6b32;
+            background: 
+                linear-gradient(rgba(13, 10, 8, 0.75), rgba(13, 10, 8, 0.85)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.25;
+            z-index: 0;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #d4af37;
+            text-shadow: 
+                0 0 10px rgba(212, 175, 55, 0.4),
+                2px 2px 6px #000,
+                0 0 30px rgba(139, 107, 50, 0.3);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        
+        .sub-heading {
+            font-style: italic;
+            color: #c9b896;
+            font-size: 1.25rem;
+            text-shadow: 1px 1px 3px #000;
+            letter-spacing: 1px;
+        }
+        
+        .ornament {
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #8b6b32, #d4af37, #8b6b32, transparent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            background: rgba(26, 19, 14, 0.85);
+            border: 2px solid #8b6b32;
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 0 25px rgba(0, 0, 0, 0.7),
+                inset 0 0 40px rgba(139, 107, 50, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        h2 {
+            font-family: 'MedievalSharp', cursive;
+            color: #d4af37;
+            font-size: 1.9rem;
+            border-bottom: 1px solid #5c4520;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px #000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h2::before {
+            content: '✦';
+            color: #8b6b32;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            line-height: 1.85;
+            font-size: 1.1rem;
+            color: #e0d0b5;
+        }
+        
+        strong {
+            color: #e2b157;
+        }
+        
+        /* Grid de criaturas */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .card {
+            background: linear-gradient(145deg, #1a130e, #241c15);
+            border: 1px solid #5c4520;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 
+                0 12px 25px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(212, 175, 55, 0.25);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid #5c4520;
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 20px 15px 22px;
+        }
+        
+        .card h3 {
+            color: #e2b157;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px #000;
+        }
+        
+        .card p {
+            font-size: 0.98rem;
+            color: #c9b896;
+            line-height: 1.6;
+        }
+        
+        /* Seção de competição com destaque */
+        .competition {
+            background: 
+                linear-gradient(rgba(26, 19, 14, 0.9), rgba(26, 19, 14, 0.92)),
+                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80') center/cover no-repeat;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid #8b6b32;
+            background: rgba(13, 10, 8, 0.95);
+            font-size: 0.95rem;
+            color: #8c7b64;
+            margin-top: 20px;
+        }
+        
+        footer p {
+            font-size: 0.95rem;
+            color: #8c7b64;
+        }
+        
+        .footer-ornament {
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b6b32, transparent);
+            margin: 0 auto 15px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header {
+                padding: 50px 15px 40px;
+            }
+            
+            section {
+                padding: 25px 18px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .card-img {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rocha Chueiri</h1>
+        <p class="sub-heading">Escola Ancestral de Magia & Feitiçaria</p>
+        <span class="ornament"></span>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2>Sobre a Escola</h2>
+            <p>
+                Escondida entre as imponentes e misteriosas <strong>Montanhas Nebulosas</strong>, a escola Rocha Chueiri é um santuário de conhecimento ancestral. 
+                Aqui, jovens de diversas raças aprendem a dominar as artes arcanas e a viver em harmonia ao lado de lendárias criaturas como grifos, fênixes e dragões.
+            </p>
+        </section>
+        
+        <section>
+            <h2>Criaturas e Companheiros</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://harrypotter.fandom.com/pt-br/wiki/Grifo" alt="Grifo majestoso" class="card-img">
+                    <div class="card-content">
+                        <h3>Grifos</h3>
+                        <p>Guardiões dos céus e símbolos de lealdade e bravura.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://www.google.com/imgres?q=fenix&imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-clipart%2F20250111%2Foriginal%2Fpngtree-ave-fenix-fire-blue-metalic-png-image_20012049.png&imgrefurl=https%3A%2F%2Fpt.pngtree.com%2Ffreepng%2Fave-fenix-fire-blue-metalic_20012049.html&docid=t7OYavQKLDj26M&tbnid=BAy6_rdhu5KzAM&vet=12ahUKEwjB5eTzk5uXAxU0ILkGHRtTJOEQnPAOegUIhQEQAA..i&w=2500&h=2500&hcb=2&ved=2ahUKEwjB5eTzk5uXAxU0ILkGHRtTJOEQnPAOegUIhQEQAA" alt="Fênix flamejante" class="card-img">
+                    <div class="card-content">
+                        <h3>Fênixes</h3>
+                        <p>Mestres da renovação e do fogo arcano restaurador.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80" alt="Dragão ancestral" class="card-img">
+                    <div class="card-content">
+                        <h3>Dragões</h3>
+                        <p>Antigos aliados de grande poder e sabedoria elemental.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="competition">
+            <h2>A Competição Anual</h2>
+            <p>
+                Sob a liderança do venerável <strong>Arquimago Professor</strong>, os alunos se dividem em equipes para a grande Competição Anual. 
+                Cada turma enfrentará desafios mágicos complexos, testando suas habilidades, coragem e trabalho em equipe em busca da glória e da vitória.
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <span class="footer-ornament"></span>
+        <p>&copy; Rocha Chueiri — Protegida por feitiços de ocultação nas Montanhas Nebulosas.</p>
+    </footer>
+</body>
+</html>
+```
